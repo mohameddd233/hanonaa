@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Always You.</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff6a88,#ff99ac);
+  padding:15px;
+  overflow:hidden;
+}
+
+.card{
+  background:#fff;
+  max-width:420px;
+  width:100%;
+  border-radius:28px;
+  padding:30px 24px 34px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  animation:fadeUp .9s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(35px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;
+  color:#ff3d6b;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+.names{
+  font-size:.95rem;
+  color:#777;
+  margin-bottom:22px;
+  letter-spacing:1px;
+}
+
+.question{
+  font-size:1.5rem;
+  font-weight:600;
+  color:#333;
+  margin-bottom:26px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:24px;
+  position:relative;
+}
+
+button{
+  border:none;
+  padding:14px 34px;
+  font-size:1.1rem;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.25s ease;
+}
+
+.yes{
+  background:linear-gradient(135deg,#ff3d6b,#ff6a88);
+  color:#fff;
+}
+
+.yes:active{
+  transform:scale(.95);
+}
+
+.no{
+  background:#eee;
+  color:#444;
+  position:relative;
+}
+
+.message{
+  display:none;
+  font-size:1.2rem;
+  color:#ff3d6b;
+  background:#fff0f4;
+  padding:18px 14px;
+  border-radius:22px;
+  animation:pop .4s ease;
+  margin-bottom:16px;
+}
+
+@keyframes pop{
+  0%{transform:scale(0)}
+  80%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+.from{
+  font-size:.9rem;
+  color:#888;
+  border-top:1px dashed #ff6a88;
+  padding-top:12px;
+}
+
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.heart{
+  position:absolute;
+  font-size:1.4rem;
+  animation:float 3s ease forwards;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  20%{opacity:1}
+  100%{transform:translateY(-20vh) scale(1);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Always You.</h1>
+  <div class="names">7ambozo & Nony</div>
+
+  <div class="question">Will you be my Valentine?</div>
+
+  <div class="buttons">
+    <button class="yes" id="yesBtn">Yes</button>
+    <button class="no" id="noBtn">No</button>
+  </div>
+
+  <div class="message" id="message">
+  To the love of my life, you make my life so meaningful and l am so lucky to have you as my valentine this year. I love you wholeheartedly and I can't wait to continue loving you for the rest of my life. I know I tell you this everyday but you are literally the most beautiful girl I know. Anyways, I love you. Always, Forever
+  </div>
+
+  <div class="from">
+    from 7ambozo to Nony
+  </div>
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+const noBtn=document.getElementById('noBtn');
+const yesBtn=document.getElementById('yesBtn');
+const msg=document.getElementById('message');
+const hearts=document.getElementById('hearts');
+
+function heart(){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerText='🤍';
+  h.style.left=Math.random()*100+'vw';
+  hearts.appendChild(h);
+  setTimeout(()=>h.remove(),3000);
+}
+
+noBtn.addEventListener('mouseover',()=>{
+  const x=Math.random()*200-100;
+  const y=Math.random()*120-60;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+});
+
+yesBtn.addEventListener('click',()=>{
+  noBtn.style.display='none';
+  msg.style.display='block';
+  for(let i=0;i<30;i++){
+    setTimeout(heart,i*80);
+  }
+});
+</script>
+
+</body>
+</html>
